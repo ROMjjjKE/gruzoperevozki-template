@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ГРУЗЛИНИЯ — грузоперевозки по Беларуси и Европе: фургоны 3,5–20 т, рефрижератор, трал</title>
+<meta name="description" content="Грузоперевозки по Беларуси, России и ЕС. Фургоны от 3,5 до 20 тонн, рефрижератор, борт с краном, трал для негатива. Расчёт за 15 минут, ТТН, крепление груза, фотофиксация.">
+<meta property="og:title" content="ГРУЗЛИНИЯ — грузоперевозки по Беларуси и Европе">
+<meta property="og:description" content="Фургоны 3,5–20 т, рефрижератор, трал. Расчёт за 15 минут. Работаем от одной паллеты.">
+<meta property="og:image" content="https://romjjjke.github.io/gruzoperevozki-template/assets/img/hero.jpg">
+<link rel="icon" href="https://romjjjke.github.io/gruzoperevozki-template/assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1218; --ink-2:#2A313C; --muted:#697383;
+  --paper:#FFFFFF; --cream:#F5F1E8; --line:#E4DFD3;
+  --accent:#FF4A17; --accent-d:#DB380A; --sun:#FFC53D;
+  --navy:#0F1A2B; --navy-2:#152238;
+  --r:18px; --wrap:1240px;
+  --shadow:0 18px 50px -22px rgba(14,18,24,.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:Manrope,"Segoe UI",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+button{font:inherit; cursor:pointer}
+h1,h2,h3,h4{font-family:Unbounded,Manrope,sans-serif; font-weight:700; line-height:1.06; margin:0; letter-spacing:-.02em}
+h1{font-size:clamp(34px,5.2vw,66px); font-weight:800}
+h2{font-size:clamp(26px,3.6vw,44px)}
+h3{font-size:clamp(19px,2vw,24px); line-height:1.2}
+p{margin:0}
+.wrap{width:min(100% - 40px,var(--wrap)); margin-inline:auto}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:10px; font-size:13px; font-weight:800;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+}
+.eyebrow::before{content:""; width:26px; height:2px; background:var(--accent)}
+.lead{font-size:clamp(16px,1.4vw,19px); color:var(--ink-2); max-width:60ch}
+.section{padding:clamp(56px,7vw,104px) 0}
+.section--cream{background:var(--cream)}
+.section--navy{background:var(--navy); color:#fff}
+.section--navy .lead{color:#B9C4D6}
+.section-head{display:grid; gap:14px; margin-bottom:clamp(28px,4vw,48px); max-width:760px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:16px 26px; border-radius:999px; border:0; font-weight:800; font-size:16px;
+  transition:transform .16s ease, background .16s ease, box-shadow .16s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn--primary{background:var(--accent); color:#fff; box-shadow:0 14px 32px -14px rgba(255,74,23,.75)}
+.btn--primary:hover{background:var(--accent-d)}
+.btn--ghost{background:transparent; color:var(--ink); border:2px solid var(--ink)}
+.btn--ghost:hover{background:var(--ink); color:#fff}
+.btn--light{background:#fff; color:var(--ink)}
+.btn--light:hover{background:var(--sun)}
+
+/* ---------- header ---------- */
+.hdr{position:sticky; top:0; z-index:60; background:rgba(255,255,255,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
+.hdr__in{display:flex; align-items:center; gap:28px; padding:14px 0}
+.logo{display:flex; align-items:center; gap:10px; font-family:Unbounded,sans-serif; font-weight:800; font-size:19px; letter-spacing:-.02em}
+.logo__mark{width:34px; height:34px; border-radius:9px; background:var(--accent); display:grid; place-items:center; color:#fff; font-size:17px; font-weight:800}
+.nav{display:flex; gap:22px; margin-left:auto; font-weight:600; font-size:15px; color:var(--ink-2)}
+.nav a{padding:6px 0; border-bottom:2px solid transparent; transition:color .15s, border-color .15s}
+.nav a:hover{color:var(--accent); border-color:var(--accent)}
+.hdr__phone{font-family:Unbounded,sans-serif; font-weight:700; font-size:17px; white-space:nowrap}
+.hdr__phone small{display:block; font-family:Manrope,sans-serif; font-weight:600; font-size:11.5px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase}
+.hdr .btn{padding:12px 20px; font-size:14.5px}
+.burger{display:none; width:44px; height:44px; border:2px solid var(--line); border-radius:12px; background:#fff; align-items:center; justify-content:center}
+.burger span{display:block; width:20px; height:2px; background:var(--ink); position:relative}
+.burger span::before,.burger span::after{content:""; position:absolute; left:0; width:20px; height:2px; background:var(--ink)}
+.burger span::before{top:-6px} .burger span::after{top:6px}
+
+/* ---------- hero ---------- */
+.hero{position:relative; overflow:hidden; background:var(--cream)}
+.hero__in{display:grid; grid-template-columns:1.02fr .98fr; gap:clamp(24px,4vw,56px); align-items:center; padding:clamp(34px,5vw,64px) 0 clamp(40px,5vw,72px)}
+.hero h1{margin:16px 0 20px}
+.hero h1 em{font-style:normal; color:var(--accent)}
+.hero__cta{display:flex; flex-wrap:wrap; gap:12px; margin:28px 0 26px}
+.hero__facts{display:flex; flex-wrap:wrap; gap:10px 22px; font-size:14.5px; font-weight:600; color:var(--ink-2)}
+.hero__facts li{display:flex; align-items:center; gap:8px; list-style:none}
+.hero__facts ul{margin:0; padding:0; display:contents}
+.dot{width:7px; height:7px; border-radius:50%; background:var(--accent); flex:none}
+.hero__media{position:relative}
+.hero__media img{border-radius:24px; aspect-ratio:4/4.4; object-fit:cover; width:100%; box-shadow:var(--shadow)}
+.hero__badge{
+  position:absolute; left:-14px; bottom:26px; background:var(--accent); color:#fff;
+  padding:16px 22px; border-radius:16px; font-family:Unbounded,sans-serif; font-weight:700;
+  box-shadow:0 20px 40px -18px rgba(255,74,23,.9);
+}
+.hero__badge b{display:block; font-size:26px; line-height:1}
+.hero__badge span{font-family:Manrope,sans-serif; font-weight:600; font-size:13px; opacity:.92}
+
+/* ---------- numbers strip ---------- */
+.nums{background:var(--navy); color:#fff}
+.nums__in{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,.14)}
+.nums__cell{background:var(--navy); padding:clamp(20px,2.6vw,34px) clamp(14px,2vw,28px)}
+.nums__cell b{display:block; font-family:Unbounded,sans-serif; font-size:clamp(22px,2.6vw,34px); color:var(--sun); line-height:1}
+.nums__cell span{display:block; margin-top:8px; font-size:13.5px; color:#AEBBCC; line-height:1.35}
+
+/* ---------- steps ---------- */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,26px)}
+.step{background:#fff; border:2px solid var(--line); border-radius:var(--r); padding:clamp(20px,2.4vw,30px); position:relative}
+.step b{font-family:Unbounded,sans-serif; font-size:40px; color:var(--accent); opacity:.28; line-height:1; display:block; margin-bottom:10px}
+.step h3{margin-bottom:8px}
+.step p{color:var(--ink-2); font-size:15.5px}
+.steps__note{margin-top:22px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; font-weight:700}
+
+/* ---------- services ---------- */
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,22px)}
+.card{
+  background:#fff; border-radius:var(--r); padding:clamp(22px,2.6vw,32px);
+  border:2px solid transparent; transition:border-color .18s, transform .18s, box-shadow .18s;
+  display:flex; flex-direction:column; gap:10px;
+}
+.card:hover{border-color:var(--accent); transform:translateY(-4px); box-shadow:var(--shadow)}
+.card__num{font-family:Unbounded,sans-serif; font-weight:700; font-size:14px; color:var(--accent); letter-spacing:.1em}
+.card h3{margin:2px 0 4px}
+.card p{color:var(--ink-2); font-size:15px}
+.card__tag{margin-top:auto; align-self:flex-start; background:var(--cream); color:var(--ink); font-weight:700; font-size:12.5px; padding:6px 12px; border-radius:999px; letter-spacing:.03em}
+.section--cream .card{border-color:rgba(14,18,24,.06)}
+
+/* ---------- fleet ---------- */
+.fleet{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,22px)}
+.veh{background:#fff; border-radius:var(--r); overflow:hidden; border:1px solid var(--line); display:flex; flex-direction:column}
+.veh img{aspect-ratio:16/10; object-fit:cover}
+.veh__body{padding:20px 22px 24px; display:flex; flex-direction:column; gap:12px; height:100%}
+.veh h3{font-size:20px}
+.veh__specs{display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; font-size:14px; color:var(--ink-2)}
+.veh__specs b{display:block; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:800}
+.veh__specs div span{font-weight:800; font-size:16px; color:var(--ink)}
+.veh__use{font-size:14.5px; color:var(--ink-2); margin-top:auto}
+
+/* ---------- calc ---------- */
+.calc{display:grid; grid-template-columns:1fr .84fr; gap:clamp(18px,3vw,34px); align-items:start}
+.calc__form{background:var(--navy-2); border:1px solid rgba(255,255,255,.12); border-radius:var(--r); padding:clamp(20px,2.6vw,30px); display:grid; gap:16px}
+.field{display:grid; gap:7px}
+.field label{font-size:12.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#9AA9BF}
+.field select,.field input{
+  width:100%; padding:14px 15px; border-radius:12px; border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06); color:#fff; font:inherit; font-weight:600;
+}
+.field select:focus,.field input:focus{outline:2px solid var(--accent); outline-offset:1px}
+.field input::placeholder{color:#7E8CA1}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{position:relative}
+.chip input{position:absolute; opacity:0; pointer-events:none}
+.chip span{
+  display:inline-block; padding:10px 15px; border-radius:999px; font-size:14px; font-weight:700;
+  border:1px solid rgba(255,255,255,.22); color:#D6DEEC; transition:.15s; cursor:pointer;
+}
+.chip input:checked + span{background:var(--accent); border-color:var(--accent); color:#fff}
+.calc__out{background:var(--sun); color:var(--ink); border-radius:var(--r); padding:clamp(22px,2.8vw,34px); position:sticky; top:96px}
+.calc__sum{font-family:Unbounded,sans-serif; font-weight:800; font-size:clamp(34px,4.4vw,54px); line-height:1; letter-spacing:-.03em}
+.calc__meta{font-weight:700; font-size:14.5px; margin-top:10px; color:#3A2E00}
+.calc__rows{margin:18px 0 0; padding:0; list-style:none; display:grid; gap:8px; font-size:14px}
+.calc__rows li{display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed rgba(14,18,24,.22); padding-bottom:7px}
+.calc__rows li span:last-child{font-weight:800; white-space:nowrap}
+.calc__warn{margin-top:14px; font-size:13.5px; font-weight:700; color:#8A2B00; display:none}
+.calc__warn.on{display:block}
+.calc__out .btn{margin-top:20px; width:100%; background:var(--ink); color:#fff}
+.calc__out .btn:hover{background:#000}
+.calc__fine{margin-top:14px; font-size:12px; color:#5A4A14}
+
+/* ---------- works ---------- */
+.works{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:clamp(12px,1.8vw,20px)}
+.work{position:relative; border-radius:var(--r); overflow:hidden; min-height:220px}
+.work img{height:100%; width:100%; object-fit:cover; aspect-ratio:1/1}
+.work figcaption{position:absolute; left:14px; bottom:14px; right:14px; background:rgba(14,18,24,.78); color:#fff; font-weight:700; font-size:13.5px; padding:9px 13px; border-radius:10px; backdrop-filter:blur(6px)}
+
+/* ---------- faq ---------- */
+.faq{display:grid; gap:12px; max-width:900px}
+.faq details{background:#fff; border:2px solid var(--line); border-radius:14px; padding:18px 22px}
+.faq details[open]{border-color:var(--accent)}
+.faq summary{font-weight:800; font-size:16.5px; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px; align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; font-family:Unbounded,sans-serif; font-size:22px; color:var(--accent); flex:none; line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:12px; color:var(--ink-2); font-size:15.5px}
+
+/* ---------- form ---------- */
+.form{display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(20px,3vw,44px); align-items:start}
+.form__card{background:#fff; color:var(--ink); border-radius:var(--r); padding:clamp(22px,2.8vw,34px); display:grid; gap:14px; box-shadow:var(--shadow)}
+.form__row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.form__card label{font-size:12.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.form__card input,.form__card select,.form__card textarea{
+  width:100%; padding:14px 15px; border-radius:12px; border:2px solid var(--line); background:#fff;
+  font:inherit; font-weight:600; color:var(--ink);
+}
+.form__card input:focus,.form__card select:focus,.form__card textarea:focus{outline:0; border-color:var(--accent)}
+.form__card textarea{resize:vertical; min-height:88px}
+.form__hint{font-size:12.5px; color:var(--muted); text-align:center}
+
+/* ---------- details ---------- */
+.specs-table{width:100%; border-collapse:collapse; background:#fff; border-radius:var(--r); overflow:hidden; font-size:15px}
+.specs-table th,.specs-table td{padding:14px 16px; text-align:left; border-bottom:1px solid var(--line)}
+.specs-table th{background:var(--navy); color:#fff; font-weight:700; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase}
+.specs-table tr:last-child td{border-bottom:0}
+.specs-table td:first-child{font-weight:800}
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:clamp(18px,3vw,36px); align-items:start}
+.detail{background:#fff; border-radius:var(--r); padding:clamp(20px,2.6vw,30px); border:2px solid var(--line)}
+.detail h3{margin-bottom:10px; font-size:20px}
+.detail p{color:var(--ink-2); font-size:15.5px}
+.detail + .detail{margin-top:16px}
+
+/* ---------- footer ---------- */
+.ftr{background:var(--ink); color:#C8D0DC; padding:clamp(40px,5vw,64px) 0 26px; font-size:15px}
+.ftr__grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:32px; padding-bottom:30px; border-bottom:1px solid rgba(255,255,255,.12)}
+.ftr h4{font-family:Manrope,sans-serif; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:#7E8CA1; margin-bottom:14px}
+.ftr a:hover{color:var(--sun)}
+.ftr .logo{color:#fff; margin-bottom:14px}
+.ftr__list{display:grid; gap:9px; margin:0; padding:0; list-style:none}
+.ftr__bottom{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; padding-top:20px; font-size:13px; color:#7E8CA1}
+.ftr__phone{font-family:Unbounded,sans-serif; font-weight:700; font-size:21px; color:#fff; margin-top:8px; display:inline-block}
+
+/* ---------- mobile bar ---------- */
+.mbar{display:none; position:fixed; left:0; right:0; bottom:0; z-index:70; background:#fff; border-top:1px solid var(--line); padding:9px 12px; gap:8px; box-shadow:0 -8px 24px -16px rgba(0,0,0,.4)}
+.mbar .btn{flex:1; padding:14px 10px; font-size:15px}
+
+@media (max-width:1080px){
+  .hero__in{grid-template-columns:1fr; gap:30px}
+  .hero__media img{aspect-ratio:16/10}
+  .hero__badge{left:auto; right:16px; bottom:16px}
+  .cards,.fleet{grid-template-columns:repeat(2,1fr)}
+  .calc{grid-template-columns:1fr}
+  .calc__out{position:static}
+  .form{grid-template-columns:1fr}
+  .nums__in{grid-template-columns:repeat(2,1fr)}
+  .works{grid-template-columns:1fr 1fr}
+  .works .work:first-child{grid-column:1/-1}
+}
+@media (max-width:1120px){
+  .nav{gap:15px; font-size:14px}
+  .hdr__phone{font-size:15px}
+  .hdr__in{gap:18px}
+}
+@media (max-width:1000px){
+  .hdr__phone{display:none}
+}
+@media (max-width:900px){
+  .nav,.hdr .btn{display:none}
+  .burger{display:flex; margin-left:auto}
+  .hdr.open .nav{
+    display:grid; position:absolute; top:100%; left:0; right:0; background:#fff;
+    padding:18px 20px 24px; gap:14px; border-bottom:1px solid var(--line); font-size:17px;
+  }
+  .steps{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .ftr__grid{grid-template-columns:1fr 1fr}
+  .mbar{display:flex}
+  body{padding-bottom:74px}
+  .hero__facts{font-size:13.5px}
+}
+@media (max-width:560px){
+  .cards,.fleet{grid-template-columns:1fr}
+  .works{grid-template-columns:1fr}
+  .form__row{grid-template-columns:1fr}
+  .hero__badge{padding:12px 16px; border-radius:13px}
+  .hero__badge b{font-size:21px}
+  .specs-table{font-size:13.5px}
+  .specs-table th,.specs-table td{padding:11px 10px}
+  .ftr__grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="#top"><span class="logo__mark">Г</span>ГРУЗЛИНИЯ</a>
+    <nav class="nav" id="nav">
+      <a href="#services">Услуги</a>
+      <a href="#fleet">Автопарк</a>
+      <a href="#calc">Расчёт</a>
+      <a href="#works">Работы</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#order">Заявка</a>
+    </nav>
+    <a class="hdr__phone" href="tel:+375000000000"><small>Звоните, ответим сразу</small>+375 (00) 000-00-00</a>
+    <a class="btn btn--primary" href="#calc">Рассчитать рейс</a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div>
+        <span class="eyebrow">Беларусь · Россия · ЕС</span>
+        <h1>Перевезём груз <em>без сюрпризов</em> по цене</h1>
+        <p class="lead">Фургоны от 3,5 до 20 тонн, рефрижератор, борт с краном и трал для техники. Считаем стоимость до подачи машины, крепим груз и отдаём документы.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#calc">Рассчитать рейс →</a>
+          <a class="btn btn--ghost" href="#order">Оставить заявку</a>
+        </div>
+        <div class="hero__facts">
+          <span><span class="dot"></span>Ответ на заявку за 15 минут</span>
+          <span><span class="dot"></span>Возим от одной паллеты</span>
+          <span><span class="dot"></span>ТТН, CMR, фотофиксация</span>
+        </div>
+      </div>
+      <div class="hero__media">
+        <img src="https://romjjjke.github.io/gruzoperevozki-template/assets/img/hero.jpg" alt="Загрузка фургона на складе" width="640" height="700" fetchpriority="high">
+        <div class="hero__badge"><b>3,5–20 т</b><span>любой класс машины</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITS -->
+  <section class="nums">
+    <div class="wrap nums__in">
+      <div class="nums__cell"><b>15 мин</b><span>считаем стоимость по маршруту, весу и объёму</span></div>
+      <div class="nums__cell"><b>7 машин</b><span>от 3,5 т до трала 40 т в одном парке</span></div>
+      <div class="nums__cell"><b>1 паллета</b><span>минимальная партия — сборный груз дешевле</span></div>
+      <div class="nums__cell"><b>4 страны</b><span>Беларусь, Россия, Польша, Литва и Латвия</span></div>
+    </div>
+  </section>
+
+  <!-- 3 STEPS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Как это работает</span>
+        <h2>Три шага — и машина едет</h2>
+        <p class="lead">Никакой переписки на два дня. Заявка, цена, подача.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><b>01</b><h3>Заявка</h3><p>Маршрут, груз, вес и дата. Фото груза ускоряют расчёт: по нему видно, какая машина нужна.</p></div>
+        <div class="step"><b>02</b><h3>Расчёт и цена</h3><p>Называем стоимость и срок. Цена фиксируется до подачи машины, доплаты только по согласованию.</p></div>
+        <div class="step"><b>03</b><h3>Машина и документы</h3><p>Подаём машину в срок, крепим груз, фотографируем до отправки и отдаём ТТН после выгрузки.</p></div>
+      </div>
+      <div class="steps__note">
+        <span>Что нужно для расчёта:</span>
+        <span class="card__tag">маршрут</span>
+        <span class="card__tag">вес и объём</span>
+        <span class="card__tag">дата</span>
+        <span class="card__tag">нужны ли грузчики</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--cream" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Услуги</span>
+        <h2>Что перевозим</h2>
+        <p class="lead">От одной паллеты по городу до трала с техникой и международного рейса с таможней.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="card__num">01</div><h3>Городские перевозки</h3><p>Доставка по городу и пригороду: паллеты, мебель, оборудование, стройматериалы. Работа по часам или за рейс.</p><span class="card__tag">По городу</span></article>
+        <article class="card"><div class="card__num">02</div><h3>Междугородние</h3><p>Рейсы по Беларуси и в соседние страны: от одной паллеты до полной загрузки. Считаем по километражу и типу кузова.</p><span class="card__tag">По стране</span></article>
+        <article class="card"><div class="card__num">03</div><h3>Международные</h3><p>Перевозки в Россию, Польшу, Литву, Латвию: документы, таможенное оформление, сопровождение груза.</p><span class="card__tag">СНГ и ЕС</span></article>
+        <article class="card"><div class="card__num">04</div><h3>Сборные грузы</h3><p>Когда нет полной загрузки: груз едет вместе с другими, вы платите за своё место. Дешевле выделенной машины.</p><span class="card__tag">Экономия</span></article>
+        <article class="card"><div class="card__num">05</div><h3>Негабарит и спецтехника</h3><p>Трал и низкорамная площадка: экскаваторы, погрузчики, оборудование. Согласование маршрута и крепление.</p><span class="card__tag">Негабарит</span></article>
+        <article class="card"><div class="card__num">06</div><h3>Ответственное хранение</h3><p>Промежуточный склад, перегрузка, комплектация заказов и отгрузка со склада по графику.</p><span class="card__tag">Склад</span></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLEET -->
+  <section class="section" id="fleet">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Автопарк</span>
+        <h2>Машина под ваш груз</h2>
+        <p class="lead">Тоннаж, объём и размеры кузова — чтобы вы сразу понимали, влезет или нет.</p>
+      </div>
+      <div class="fleet">
+        <article class="veh">
+          <img src="https://romjjjke.github.io/gruzoperevozki-template/assets/img/cargo.jpg" alt="Фургон 5 тонн, паллеты" loading="lazy">
+          <div class="veh__body">
+            <h3>Фургон 5 т</h3>
+            <div class="veh__specs">
+              <div><b>Объём</b><span>34 м³</span></div>
+              <div><b>Вес</b><span>3 000 кг</span></div>
+              <div><b>Кузов</b><span>6,2 × 2,3 × 2,4 м</span></div>
+              <div><b>Класс</b><span>сухой</span></div>
+            </div>
+            <p class="veh__use">Паллеты, мебель, оборудование по стране. Самый частый выбор для 4–10 паллет.</p>
+          </div>
+        </article>
+        <article class="veh">
+          <img src="https://romjjjke.github.io/gruzoperevozki-template/assets/img/reefer.jpg" alt="Рефрижератор 5 тонн" loading="lazy">
+          <div class="veh__body">
+            <h3>Рефрижератор 5 т</h3>
+            <div class="veh__specs">
+              <div><b>Объём</b><span>30 м³</span></div>
+              <div><b>Вес</b><span>4 000 кг</span></div>
+              <div><b>Кузов</b><span>6,0 × 2,3 × 2,2 м</span></div>
+              <div><b>Режим</b><span>−18…+4 °C</span></div>
+            </div>
+            <p class="veh__use">Продукты, медикаменты, всё, что нельзя везти в тепле. Температура держится весь рейс.</p>
+          </div>
+        </article>
+        <article class="veh">
+          <img src="https://romjjjke.github.io/gruzoperevozki-template/assets/img/oversize.jpg" alt="Трал для негабарита и техники" loading="lazy">
+          <div class="veh__body">
+            <h3>Трал 40 т</h3>
+            <div class="veh__specs">
+              <div><b>Вес</b><span>до 40 000 кг</span></div>
+              <div><b>Площадка</b><span>13,6 × 3,0 м</span></div>
+              <div><b>Погрузка</b><span>своим ходом</span></div>
+              <div><b>Класс</b><span>негабарит</span></div>
+            </div>
+            <p class="veh__use">Экскаваторы, погрузчики, станки. Считаем после габаритов и точек крепления.</p>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:22px"><a class="btn btn--ghost" href="#specs">Все габариты и лимиты</a></p>
+    </div>
+  </section>
+
+  <!-- CALC -->
+  <section class="section section--navy" id="calc">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Расчёт</span>
+        <h2>Сколько стоит рейс</h2>
+        <p class="lead">Выберите направление и машину — увидите ориентир сразу. Точную цену подтверждаем после уточнения груза.</p>
+      </div>
+      <div class="calc">
+        <form class="calc__form" id="calcForm" onsubmit="return false">
+          <div class="field">
+            <label for="c-dir">Направление</label>
+            <select id="c-dir">
+              <option value="720">Минск — Москва · 720 км</option>
+              <option value="190">Минск — Вильнюс · 190 км</option>
+              <option value="550">Минск — Варшава · 550 км</option>
+              <option value="520">Минск — Киев · 520 км</option>
+              <option value="300">Минск — Гомель · 300 км</option>
+              <option value="350">Минск — Брест · 350 км</option>
+              <option value="280">Минск — Витебск · 280 км</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-km">Своё расстояние, км</label>
+            <input id="c-km" type="number" min="0" max="5000" inputmode="numeric" placeholder="например, 430">
+          </div>
+          <div class="field">
+            <label for="c-veh">Машина</label>
+            <select id="c-veh">
+              <option value="van35">Фургон 3,5 т · 18 м³</option>
+              <option value="van5" selected>Фургон 5 т · 34 м³</option>
+              <option value="truck10">Фургон 10 т · 50 м³</option>
+              <option value="truck20">Тент 20 т · 90 м³</option>
+              <option value="reefer">Рефрижератор 5 т</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-w">Вес груза, кг</label>
+            <input id="c-w" type="number" min="0" max="40000" inputmode="numeric" placeholder="например, 1800">
+          </div>
+          <div class="field">
+            <label>Дополнительно</label>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" id="x-load" value="45"><span>Погрузка</span></label>
+              <label class="chip"><input type="checkbox" id="x-unload" value="45"><span>Разгрузка</span></label>
+              <label class="chip"><input type="checkbox" id="x-forwarder" value="35"><span>Экспедитор</span></label>
+              <label class="chip"><input type="checkbox" id="x-back" value="15"><span>Попутный груз</span></label>
+            </div>
+          </div>
+        </form>
+
+        <aside class="calc__out">
+          <div style="font-size:12.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#5A4A14">Ориентировочная стоимость</div>
+          <div class="calc__sum" id="c-sum">— BYN</div>
+          <div class="calc__meta" id="c-meta">720 км · Фургон 5 т</div>
+          <ul class="calc__rows" id="c-rows"></ul>
+          <div class="calc__warn" id="c-warn"></div>
+          <a class="btn" id="c-cta" href="#order">Уточнить рейс</a>
+          <p class="calc__fine">Тарифы демонстрационные: замените ставки в коде калькулятора на свои. Расчёт не включает таможню и платные дороги.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section class="section" id="works">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Работы</span>
+        <h2>Как это выглядит</h2>
+        <p class="lead">Реальные погрузки: паллеты, температурный режим, техника на трале.</p>
+      </div>
+      <div class="works">
+        <figure class="work"><img src="https://romjjjke.github.io/gruzoperevozki-template/assets/img/loading.jpg" alt="Погрузка паллет в фургон" loading="lazy"><figcaption>Погрузка · паллеты и крепление</figcaption></figure>
+        <figure class="work"><img src="https://romjjjke.github.io/gruzoperevozki-template/assets/img/reefer.jpg" alt="Рефрижератор с температурным режимом" loading="lazy"><figcaption>Рефрижератор · режим −18…+4 °C</figcaption></figure>
+        <figure class="work"><img src="https://romjjjke.github.io/gruzoperevozki-template/assets/img/oversize.jpg" alt="Трал с негабаритным грузом" loading="lazy"><figcaption>Негабарит · трал 40 т</figcaption></figure>
+      </div>
+      <p style="margin-top:20px; color:var(--muted); font-size:14px">Фото в шаблоне демонстрационные — замените на свои снимки машин и погрузок, это самый весомый аргумент.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--cream" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Вопросы</span>
+        <h2>Что спрашивают чаще всего</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>Как считается стоимость?</summary><p>Ставка за километр зависит от типа кузова и тоннажа, плюс погрузка, разгрузка и дополнительные услуги. В шаблоне калькулятор работает на демонстрационных тарифах — их нужно заменить на свои.</p></details>
+        <details><summary>Что нужно указать для расчёта?</summary><p>Маршрут, вес и объём груза, тип груза (сухой кузов или рефрижератор), дату и нужны ли грузчики. По этим данным уже можно назвать вилку.</p></details>
+        <details><summary>Возите ли одну паллету?</summary><p>Да. Для небольших партий есть машина 3,5 т и вариант сборного груза: вы платите за место, а не за всю машину.</p></details>
+        <details><summary>Как оформляются документы?</summary><p>Товарно-транспортная накладная, при необходимости — доверенность и сопроводительные документы. Для международных рейсов — CMR и таможенное оформление.</p></details>
+        <details><summary>Груз застрахован?</summary><p>В шаблоне этот пункт — заготовка: укажите, страхуете ли вы груз и на какую сумму. Это один из первых вопросов клиента при дорогом грузе.</p></details>
+        <details><summary>Что с негабаритом?</summary><p>Для техники и крупных конструкций используется трал. Нужны габариты, вес и точки крепления; маршрут иногда требует согласования.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section class="section section--navy" id="order">
+    <div class="wrap form">
+      <div>
+        <span class="eyebrow">Заявка</span>
+        <h2 style="margin:14px 0 16px">Опишите перевозку</h2>
+        <p class="lead">Маршрут, груз и дата — этого достаточно. Ответим в течение 15 минут в рабочее время и сразу назовём цену.</p>
+        <p class="lead" style="margin-top:16px">Если удобнее голосом — звоните: <a href="tel:+375000000000" style="color:var(--sun); font-weight:800">+375 (00) 000-00-00</a></p>
+      </div>
+      <form class="form__card" id="orderForm" novalidate>
+        <div class="form__row">
+          <div class="field"><label for="f-name">Имя</label><input id="f-name" name="name" required placeholder="Как к вам обращаться"></div>
+          <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" required inputmode="tel" placeholder="+375 __ ___-__-__"></div>
+        </div>
+        <div class="field"><label for="f-route">Маршрут</label><input id="f-route" name="route" placeholder="Например: Минск — Гомель"></div>
+        <div class="field"><label for="f-cargo">Груз</label>
+          <select id="f-cargo" name="cargo">
+            <option>Паллеты / коробки</option>
+            <option>Стройматериалы</option>
+            <option>Оборудование</option>
+            <option>Мебель</option>
+            <option>Продукты (рефрижератор)</option>
+            <option>Негабарит</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-details">Детали</label><textarea id="f-details" name="details" placeholder="Вес, объём, дата, нужны ли грузчики"></textarea></div>
+        <button class="btn btn--primary" type="submit">Отправить в WhatsApp</button>
+        <p class="form__hint">Форма откроет WhatsApp с готовым текстом заявки. Номер замените на свой перед публикацией.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="section" id="specs">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Подробности</span>
+        <h2>Габариты, лимиты и правила</h2>
+        <p class="lead">Таблица для тех, кто считает всё заранее. Если сомневаетесь — просто напишите вес и объём, подберём машину.</p>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="specs-table">
+          <thead><tr><th>Машина</th><th>Объём</th><th>Грузоподъёмность</th><th>Кузов, Д × Ш × В</th><th>Под что</th></tr></thead>
+          <tbody>
+            <tr><td>Фургон 3,5 т</td><td>18 м³</td><td>1 500 кг</td><td>4,2 × 2,0 × 2,2 м</td><td>Городская доставка, мелкие партии, переезды</td></tr>
+            <tr><td>Фургон 5 т</td><td>34 м³</td><td>3 000 кг</td><td>6,2 × 2,3 × 2,4 м</td><td>Паллеты, мебель, оборудование по стране</td></tr>
+            <tr><td>Фургон 10 т</td><td>50 м³</td><td>8 000 кг</td><td>8,0 × 2,4 × 2,6 м</td><td>Крупные партии, стройматериалы</td></tr>
+            <tr><td>Тент 20 т</td><td>90 м³</td><td>20 000 кг</td><td>13,6 × 2,45 × 2,7 м</td><td>Междугородние и международные рейсы</td></tr>
+            <tr><td>Рефрижератор 5 т</td><td>30 м³</td><td>4 000 кг</td><td>6,0 × 2,3 × 2,2 м</td><td>Продукты, медикаменты, −18…+4 °C</td></tr>
+            <tr><td>Борт с краном</td><td>—</td><td>8 000 кг</td><td>6,5 × 2,5 м</td><td>Стройматериалы, блоки, кольца, погрузка краном</td></tr>
+            <tr><td>Трал низкорамный</td><td>—</td><td>40 000 кг</td><td>13,6 × 3,0 м</td><td>Спецтехника и негабарит</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:16px; color:var(--muted); font-size:14px">Список машин в шаблоне демонстрационный: замените на свой парк и уточните внутренние размеры.</p>
+
+      <div class="two-col" style="margin-top:clamp(28px,4vw,48px)">
+        <div class="detail">
+          <h3>Груз не должен ехать по кузову</h3>
+          <p>Ремни, распорные балки, упоры и ложементы. При торможении груз весом в тонну ведёт себя как тонна, а не как коробка: крепление — часть перевозки, а не формальность.</p>
+        </div>
+        <div class="detail">
+          <h3>Негабарит считаем отдельно</h3>
+          <p>Для техники и крупных конструкций нужны схемы крепления и расчёт нагрузок. Такие рейсы считаем после уточнения габаритов и точек крепления, иногда маршрут требует согласования.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div>
+        <a class="logo" href="#top"><span class="logo__mark">Г</span>ГРУЗЛИНИЯ</a>
+        <p>Городские, междугородние и международные грузоперевозки: фургоны от 3,5 до 20 тонн, рефрижератор, борт, манипулятор, трал. Экспедирование и документы.</p>
+        <a class="ftr__phone" href="tel:+375000000000">+375 (00) 000-00-00</a>
+        <p style="margin-top:6px">Ваш город, ваш адрес</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul class="ftr__list">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#fleet">Автопарк</a></li>
+          <li><a href="#calc">Расчёт рейса</a></li>
+          <li><a href="#works">Работы</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#order">Заявка</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul class="ftr__list">
+          <li><a href="tel:+375000000000">+375 (00) 000-00-00</a></li>
+          <li><a href="#" data-wa>WhatsApp</a></li>
+          <li><a href="#">Viber</a></li>
+          <li><a href="#">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__bottom">
+      <span>© 2026 ГРУЗЛИНИЯ — шаблон сайта грузоперевозок</span>
+      <a href="#">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn--primary" href="tel:+375000000000">Позвонить</a>
+  <a class="btn btn--ghost" href="#order">Заявка</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var WA='375000000000';
+
+  /* мобильное меню */
+  var hdr=document.getElementById('hdr'), burger=document.getElementById('burger');
+  burger.addEventListener('click',function(){
+    var open=hdr.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click',function(){ hdr.classList.remove('open'); burger.setAttribute('aria-expanded','false'); });
+  });
+
+  /* калькулятор */
+  var rates={van35:{name:'Фургон 3,5 т · 18 м³',rate:1.10,cap:1500},
+             van5:{name:'Фургон 5 т · 34 м³',rate:1.40,cap:3000},
+             truck10:{name:'Фургон 10 т · 50 м³',rate:1.75,cap:8000},
+             truck20:{name:'Тент 20 т · 90 м³',rate:2.30,cap:20000},
+             reefer:{name:'Рефрижератор 5 т',rate:1.85,cap:4000}};
+  var extras={load:['Погрузка',45],unload:['Разгрузка',45],forwarder:['Экспедитор',35]};
+
+  var dir=document.getElementById('c-dir'), kmIn=document.getElementById('c-km'),
+      veh=document.getElementById('c-veh'), wIn=document.getElementById('c-w'),
+      sum=document.getElementById('c-sum'), meta=document.getElementById('c-meta'),
+      rows=document.getElementById('c-rows'), warn=document.getElementById('c-warn'),
+      cta=document.getElementById('c-cta');
+
+  function money(v){ return Math.round(v/5)*5; }
+  function fmt(v){ return money(v).toLocaleString('ru-RU'); }
+
+  function run(){
+    var km=parseFloat(kmIn.value)||parseFloat(dir.value)||300;
+    var v=rates[veh.value]||rates.van5;
+    var weight=parseFloat(wIn.value)||0;
+    var base=km*v.rate;
+    var list=[['Пробег '+km+' км × '+v.rate.toFixed(2)+' BYN',fmt(base)]];
+    var total=base;
+
+    Object.keys(extras).forEach(function(k){
+      var el=document.getElementById('x-'+k);
+      if(el&&el.checked){ total+=extras[k][1]; list.push([extras[k][0],fmt(extras[k][1])]); }
+    });
+
+    var back=document.getElementById('x-back');
+    if(back&&back.checked){ var disc=total*0.15; total-=disc; list.push(['Попутный груз, −15%','−'+fmt(disc)]); }
+
+    sum.textContent=fmt(total)+' BYN';
+    meta.textContent=km+' км · '+v.name;
+    rows.innerHTML=list.map(function(r){ return '<li><span>'+r[0]+'</span><span>'+r[1]+'</span></li>'; }).join('');
+
+    if(weight>v.cap){
+      warn.className='calc__warn on';
+      warn.textContent='Вес '+weight.toLocaleString('ru-RU')+' кг выше лимита этой машины ('+v.cap.toLocaleString('ru-RU')+' кг). Нужен класс выше.';
+    } else if(weight>0){
+      warn.className='calc__warn on';
+      warn.style.color='#2C4A16';
+      warn.textContent='Вес '+weight.toLocaleString('ru-RU')+' кг — в лимит машины проходит.';
+    } else {
+      warn.className='calc__warn';
+      warn.textContent='';
+    }
+
+    var txt='Здравствуйте! Нужен рейс: '+km+' км, '+v.name+', вес '+(weight?weight+' кг':'уточню')+'. Подскажите стоимость.';
+    cta.href='https://wa.me/'+WA+'?text='+encodeURIComponent(txt);
+  }
+  [dir,kmIn,veh,wIn].forEach(function(el){ el.addEventListener('input',run); el.addEventListener('change',run); });
+  document.querySelectorAll('.chip input').forEach(function(el){ el.addEventListener('change',run); });
+  run();
+
+  /* форма заявки */
+  var of=document.getElementById('orderForm');
+  of.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=of.name.value.trim(), phone=of.phone.value.trim();
+    if(!name||!phone){ (name?of.phone:of.name).focus(); return; }
+    var t='Заявка с сайта\nИмя: '+name+'\nТелефон: '+phone+
+          '\nМаршрут: '+(of.route.value||'—')+
+          '\nГруз: '+of.cargo.value+
+          '\nДетали: '+(of.details.value||'—');
+    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank');
+  });
+
+  document.querySelectorAll('[data-wa]').forEach(function(a){
+    a.href='https://wa.me/'+WA;
+    a.target='_blank'; a.rel='noopener';
+  });
+})();
+</script>
+</body>
+</html>
