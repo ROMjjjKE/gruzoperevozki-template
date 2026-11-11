@@ -1,0 +1,136 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Расчёт рейса — калькулятор стоимости перевозки</title>
+<meta name="description" content="Калькулятор стоимости рейса: расстояние, тип кузова, вес груза, погрузка и разгрузка. Тарифы в шаблоне демонстрационные.">
+<meta property="og:title" content="Расчёт рейса — калькулятор стоимости перевозки"><meta property="og:description" content="Калькулятор стоимости рейса: расстояние, тип кузова, вес груза, погрузка и разгрузка. Тарифы в шаблоне демонстрационные.">
+<meta property="og:type" content="website"><meta property="og:locale" content="ru_BY">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#131B1E;--paper:#EDEEEA;--white:#FAFBF9;--red:#B23A2E;--red2:#8E2C22;--line:#C7CEC8;--line2:#ADB6AF;
+--disp:"IBM Plex Sans Condensed",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--body)}
+body.is-locked{overflow:hidden}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:min(1240px,100% - 44px);margin-inline:auto}
+.top{position:sticky;top:0;z-index:60;background:rgba(237,238,234,.96);border-bottom:1px solid var(--line)}
+.top__in{display:flex;align-items:center;gap:16px;height:72px}
+.nav{display:flex;gap:16px;margin-left:auto}
+.burger{display:none;margin-left:auto;width:44px;height:38px;background:none;border:1px solid var(--ink);flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0}
+.burger span{width:20px;height:2px;background:var(--ink);display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+text-transform:uppercase;padding:15px 20px;border:1px solid var(--ink);background:var(--ink);color:#fff}
+.btn--red{background:var(--red2);border-color:var(--red2);color:#fff}
+.btn--wg{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.hero{position:relative;overflow:hidden;background:#0F1719}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__in{position:relative;z-index:2;color:#fff}
+.hero h1{font-family:var(--disp);font-size:clamp(30px,5.4vw,72px);line-height:.96;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+.drawer{position:fixed;inset:0;z-index:120;background:rgba(19,27,30,.62);display:flex;justify-content:flex-end}
+.drawer__in{width:min(410px,100%);background:var(--paper);height:100%;overflow-y:auto;padding:18px 22px 30px;display:flex;flex-direction:column}
+.fbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;background:rgba(237,238,234,.98);border-top:1px solid var(--line2);padding:8px 10px;gap:6px}
+.fbar a{flex:1;text-align:center;padding:11px 4px;font-family:var(--mono);font-size:11px;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink)}
+.fbar a:first-child{background:var(--red2);border-color:var(--red2);color:#fff}
+@media (max-width:859px){.fbar{display:flex}body{padding-bottom:64px}}
+@media (max-width:1049px){.nav,.top__tel{display:none}.burger{display:flex}}
+</style>
+<link rel="stylesheet" href="assets/css/style.v1.css">
+</head><body>
+<header class="top"><div class="wrap top__in">
+  <a class="brand" href="index.html" aria-label="ГРУЗЛИНИЯ — на главную">
+    <span class="brand__mk" aria-hidden="true"></span>
+    <span class="brand__tx"><b>ГРУЗЛИНИЯ</b><span>Грузоперевозки · Ваш город</span></span>
+  </a>
+  <nav class="nav" aria-label="Основная навигация"><a href="uslugi.html"Услуги></a><a href="avtopark.html"Автопарк></a><a href="raschet.html"Расчёт> aria-current="page"</a><a href="geografiya.html"География></a><a href="raboty.html"Работы></a><a href="o-kompanii.html"О компании></a></nav>
+  <a class="top__tel" href="tel:+375000000000">+375 (00) 000-00-00</a>
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+</div></header>
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer__in" role="dialog" aria-modal="true" aria-label="Меню сайта">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <span class="mono">Меню</span>
+      <button class="drawer__x" id="drawerClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <a class="dl" href="uslugi.html">Услуги</a><a class="dl" href="avtopark.html">Автопарк</a><a class="dl" href="raschet.html">Расчёт</a><a class="dl" href="geografiya.html">География</a><a class="dl" href="raboty.html">Работы</a><a class="dl" href="o-kompanii.html">О компании</a><a class="dl" href="kontakty.html">Контакты</a>
+    <a class="btn btn--red" href="tel:+375000000000" style="margin-top:18px">+375 (00) 000-00-00</a>
+    <a class="btn btn--ghost" href="https://wa.me/375000000000" target="_blank" rel="noopener" style="margin-top:8px">WhatsApp</a>
+  </div>
+</div>
+
+<section style="padding:42px 0 30px;border-bottom:1px solid var(--line);background:var(--white)">
+<div class="wrap"><p class="eyebrow">Расчёт</p><h1 style="font-size:clamp(26px,4vw,50px)">Калькулятор рейса</h1>
+<p class="lede" style="margin:15px 0 0">Расстояние, кузов, вес и дополнительные услуги. Считает вилку и предупреждает, если груз не проходит по весу.</p></div></section>
+<main>
+<section class="section"><div class="wrap"><div class="calc" id="calc">
+  <div class="calc__form">
+    <div><label for="c-dir">Направление</label><select id="c-dir"><option value="mow">Минск — Москва — 720 км</option><option value="vil">Минск — Вильнюс — 190 км</option><option value="war">Минск — Варшава — 550 км</option><option value="kiev">Минск — Киев — 520 км</option><option value="gom">Минск — Гомель — 300 км</option><option value="bre">Минск — Брест — 350 км</option><option value="vit">Минск — Витебск — 280 км</option></select></div>
+    <div><label for="c-km">Или своё расстояние, км</label><input id="c-km" type="number" min="0" max="9000" step="10" placeholder="например, 420"></div>
+    <div><label for="c-veh">Тип кузова</label><select id="c-veh"><option value="van35">Фургон 3,5 т · 18 м³</option><option value="van5">Фургон 5 т · 34 м³</option><option value="truck10">Фургон 10 т · 50 м³</option><option value="truck20">Тент 20 т · 90 м³</option><option value="reefer">Рефрижератор 5 т</option></select></div>
+    <div><label for="c-w">Вес груза, кг</label><input id="c-w" type="number" min="0" max="40000" step="50" placeholder="например, 1800"></div>
+    <div><label>Дополнительно</label><div class="checks"><label><input type="checkbox" name="ex" value="load"> Погрузка</label><label><input type="checkbox" name="ex" value="unload"> Разгрузка</label><label><input type="checkbox" name="ex" value="forwarder"> Экспедитор</label><label><input type="checkbox" name="ex" value="wait"> Ожидание, час</label><label><input type="checkbox" id="c-back"> Попутный груз (скидка)</label></div></div>
+  </div>
+  <div class="calc__out" aria-live="polite">
+    <h4>Ориентировочная стоимость</h4>
+    <p class="calc__sum" id="c-sum">—</p>
+    <p class="calc__meta" id="c-meta">—</p>
+    <div class="calc__rows" id="c-rows"></div>
+    <p class="calc__warn" id="c-warn" hidden></p>
+    <p class="calc__note">Тарифы в шаблоне демонстрационные: замените ставки в файле assets/js/main.v1.js на свои. Расчёт не учитывает простои, таможню и платные дороги.</p>
+    <a class="btn btn--red" id="c-cta" href="https://wa.me/375000000000" target="_blank" rel="noopener" style="width:100%;margin-top:6px">Уточнить рейс в WhatsApp</a>
+  </div>
+  <script type="application/json" id="calcData">{"rates": [["van35", "Фургон 3,5 т · 18 м³", 1.1, 1500], ["van5", "Фургон 5 т · 34 м³", 1.4, 3000], ["truck10", "Фургон 10 т · 50 м³", 1.75, 8000], ["truck20", "Тент 20 т · 90 м³", 2.3, 20000], ["reefer", "Рефрижератор 5 т", 1.85, 4000]], "extra": [["load", "Погрузка", 45], ["unload", "Разгрузка", 45], ["forwarder", "Экспедитор", 35], ["wait", "Ожидание, час", 25]], "dist": [["Минск — Москва", 720], ["Минск — Вильнюс", 190], ["Минск — Варшава", 550], ["Минск — Киев", 520], ["Минск — Гомель", 300], ["Минск — Брест", 350], ["Минск — Витебск", 280]]}</script>
+</div></div></section>
+<section class="section section--white"><div class="wrap split">
+  <div><p class="eyebrow">Как считается</p><h2>Формула<br>без сюрпризов</h2>
+    <p class="lede">Стоимость = расстояние × ставка за километр для выбранного кузова + погрузка и разгрузка + дополнительные услуги. Скидка за попутный груз применяется, если машина всё равно едет в эту сторону.</p>
+    <p class="lede" style="margin-top:12px">Что калькулятор не учитывает: простои сверх нормы, платные дороги, паромы, таможенные платежи и ночные стоянки. Эти пункты обсуждаются отдельно и фиксируются в заявке.</p>
+    <p class="fineprint" style="margin-top:12px">Тарифы заложены как демонстрационные (1,10–2,30 BYN за км). Замените их в файле assets/js/main.v1.js в объекте rates.</p></div>
+  <div><img src="assets/img/loading.jpg" alt="Погрузка паллет" loading="lazy"></div>
+</div></section>
+<section class="section"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Порядок</p><h2>После расчёта</h2></div>
+    <p class="lede">Что происходит, когда вы согласовали вилку.</p></div>
+  <div class="steps"><div class="step"><span class="step__n">01</span><h3>Заявка</h3><p>Маршрут, груз, вес и объём, дата. Фото груза ускоряют расчёт.</p></div><div class="step"><span class="step__n">02</span><h3>Расчёт</h3><p>Подбираем машину, считаем километраж и дополнительные работы, называем вилку и срок.</p></div><div class="step"><span class="step__n">03</span><h3>Документы</h3><p>ТТН и сопроводительные документы, при необходимости — доверенность и пропуска.</p></div><div class="step"><span class="step__n">04</span><h3>Погрузка</h3><p>Подача машины, крепление груза, фотофиксация состояния до отправки.</p></div><div class="step"><span class="step__n">05</span><h3>Рейс и выгрузка</h3><p>Связь с водителем по ходу рейса, выгрузка, подтверждающие документы.</p></div></div>
+</div></section>
+<section class="section section--white"><div class="wrap split">
+  <div><p class="eyebrow">Заявка</p><h2>Уточнить рейс</h2><p class="lede" style="margin-bottom:16px">Пришлите маршрут и параметры груза — подтвердим стоимость и свободную дату.</p><form class="form" id="leadForm" novalidate>
+  <div><label for="f-name">Имя</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться"></div>
+  <div><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+375"></div>
+  <div><label for="f-route">Маршрут</label><input id="f-route" name="route" type="text" placeholder="Откуда — куда"></div>
+  <div><label for="f-cargo">Груз</label>
+    <select id="f-cargo" name="cargo">
+      <option>Паллеты / коробки</option><option>Стройматериалы</option><option>Оборудование</option>
+      <option>Мебель</option><option>Продукты (рефрижератор)</option><option>Негабарит</option><option>Другое</option>
+    </select></div>
+  <div><label for="f-msg">Детали</label><textarea id="f-msg" name="msg" placeholder="Вес, объём, дата, нужна ли погрузка"></textarea></div>
+  <button class="btn btn--red" type="submit">Отправить в WhatsApp</button>
+  <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+  <p class="fineprint" style="margin:0">Форма не отправляет данные на сервер: она открывает WhatsApp с готовым текстом заявки. В шаблоне подставьте свой номер.</p>
+</form></div>
+  <div><p class="eyebrow">География</p><h2>Куда возим</h2>
+    <div class="route" style="border-color:var(--line2)"><div>Минск — Москва<b>720 км</b></div><div>Минск — Вильнюс<b>190 км</b></div><div>Минск — Варшава<b>550 км</b></div><div>Минск — Киев<b>520 км</b></div><div>Минск — Гомель<b>300 км</b></div><div>Минск — Брест<b>350 км</b></div></div>
+    <a class="btn btn--ghost" href="geografiya.html" style="margin-top:14px">Все направления</a></div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap foot__in">
+  <div><h4>ГРУЗЛИНИЯ</h4>
+    <p>Городские, междугородние и международные грузоперевозки: фургоны от 3,5 до 20 тонн, рефрижератор, борт, манипулятор, трал для негабарита. Экспедирование и документы.</p>
+    <p style="margin-top:12px"><a href="tel:+375000000000" style="font-family:var(--mono);font-size:18px;color:#fff">+375 (00) 000-00-00</a></p></div>
+  <div><h4>Разделы</h4><a href="uslugi.html">Услуги</a><a href="avtopark.html">Автопарк</a><a href="raschet.html">Расчёт</a><a href="geografiya.html">География</a><a href="raboty.html">Работы</a><a href="o-kompanii.html">О компании</a><a href="kontakty.html">Контакты</a></div>
+  <div><h4>Связь</h4><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+    <p>Ваш город, ваш адрес</p>
+    <p class="mono" style="color:#7F918B;font-size:10.5px;line-height:1.5">Это шаблон сайта: название, телефон, адрес, тарифы и фото заменяются на реальные данные компании.</p></div>
+  <div class="foot__bt"><span class="mono" style="color:#7F918B">© 2026 ГРУЗЛИНИЯ — шаблон сайта грузоперевозок</span>
+    <a href="politika.html" class="mono" style="color:#A9B9B4">Политика конфиденциальности</a></div>
+</div></footer>
+<div class="fbar">
+  <a href="tel:+375000000000">Позвонить</a>
+  <a href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="viber://chat?number=%2B375000000000">Viber</a>
+  <a href="https://t.me/">Telegram</a>
+</div>
+<script src="assets/js/main.v1.js" defer></script>
+</body></html>

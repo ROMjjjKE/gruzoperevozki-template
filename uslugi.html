@@ -1,0 +1,102 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Услуги — грузоперевозки | шаблон сайта</title>
+<meta name="description" content="Городские, междугородние, международные перевозки, сборные грузы, негабарит, ответственное хранение. Описание услуг для сайта транспортной компании.">
+<meta property="og:title" content="Услуги — грузоперевозки | шаблон сайта"><meta property="og:description" content="Городские, междугородние, международные перевозки, сборные грузы, негабарит, ответственное хранение. Описание услуг для сайта транспортной компании.">
+<meta property="og:type" content="website"><meta property="og:locale" content="ru_BY">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#131B1E;--paper:#EDEEEA;--white:#FAFBF9;--red:#B23A2E;--red2:#8E2C22;--line:#C7CEC8;--line2:#ADB6AF;
+--disp:"IBM Plex Sans Condensed",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--body)}
+body.is-locked{overflow:hidden}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:min(1240px,100% - 44px);margin-inline:auto}
+.top{position:sticky;top:0;z-index:60;background:rgba(237,238,234,.96);border-bottom:1px solid var(--line)}
+.top__in{display:flex;align-items:center;gap:16px;height:72px}
+.nav{display:flex;gap:16px;margin-left:auto}
+.burger{display:none;margin-left:auto;width:44px;height:38px;background:none;border:1px solid var(--ink);flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0}
+.burger span{width:20px;height:2px;background:var(--ink);display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+text-transform:uppercase;padding:15px 20px;border:1px solid var(--ink);background:var(--ink);color:#fff}
+.btn--red{background:var(--red2);border-color:var(--red2);color:#fff}
+.btn--wg{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.hero{position:relative;overflow:hidden;background:#0F1719}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__in{position:relative;z-index:2;color:#fff}
+.hero h1{font-family:var(--disp);font-size:clamp(30px,5.4vw,72px);line-height:.96;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+.drawer{position:fixed;inset:0;z-index:120;background:rgba(19,27,30,.62);display:flex;justify-content:flex-end}
+.drawer__in{width:min(410px,100%);background:var(--paper);height:100%;overflow-y:auto;padding:18px 22px 30px;display:flex;flex-direction:column}
+.fbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;background:rgba(237,238,234,.98);border-top:1px solid var(--line2);padding:8px 10px;gap:6px}
+.fbar a{flex:1;text-align:center;padding:11px 4px;font-family:var(--mono);font-size:11px;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink)}
+.fbar a:first-child{background:var(--red2);border-color:var(--red2);color:#fff}
+@media (max-width:859px){.fbar{display:flex}body{padding-bottom:64px}}
+@media (max-width:1049px){.nav,.top__tel{display:none}.burger{display:flex}}
+</style>
+<link rel="stylesheet" href="assets/css/style.v1.css">
+</head><body>
+<header class="top"><div class="wrap top__in">
+  <a class="brand" href="index.html" aria-label="ГРУЗЛИНИЯ — на главную">
+    <span class="brand__mk" aria-hidden="true"></span>
+    <span class="brand__tx"><b>ГРУЗЛИНИЯ</b><span>Грузоперевозки · Ваш город</span></span>
+  </a>
+  <nav class="nav" aria-label="Основная навигация"><a href="uslugi.html"Услуги> aria-current="page"</a><a href="avtopark.html"Автопарк></a><a href="raschet.html"Расчёт></a><a href="geografiya.html"География></a><a href="raboty.html"Работы></a><a href="o-kompanii.html"О компании></a></nav>
+  <a class="top__tel" href="tel:+375000000000">+375 (00) 000-00-00</a>
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+</div></header>
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer__in" role="dialog" aria-modal="true" aria-label="Меню сайта">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <span class="mono">Меню</span>
+      <button class="drawer__x" id="drawerClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <a class="dl" href="uslugi.html">Услуги</a><a class="dl" href="avtopark.html">Автопарк</a><a class="dl" href="raschet.html">Расчёт</a><a class="dl" href="geografiya.html">География</a><a class="dl" href="raboty.html">Работы</a><a class="dl" href="o-kompanii.html">О компании</a><a class="dl" href="kontakty.html">Контакты</a>
+    <a class="btn btn--red" href="tel:+375000000000" style="margin-top:18px">+375 (00) 000-00-00</a>
+    <a class="btn btn--ghost" href="https://wa.me/375000000000" target="_blank" rel="noopener" style="margin-top:8px">WhatsApp</a>
+  </div>
+</div>
+
+<section style="padding:42px 0 30px;border-bottom:1px solid var(--line);background:var(--white)">
+<div class="wrap"><p class="eyebrow">Услуги</p><h1 style="font-size:clamp(26px,4vw,50px)">Что входит<br>в перевозку</h1>
+<p class="lede" style="margin:15px 0 0">Шесть направлений, которые закрывают почти все запросы: от одной паллеты по городу до трала с техникой и международного рейса с документами.</p></div></section>
+<main>
+<section class="section"><div class="wrap"><div class="rows"><div class="row"><div class="row__n">01</div><div><h3>Городские перевозки</h3><p>Доставка по городу и пригороду: паллеты, мебель, оборудование, стройматериалы. Машина от 3,5 т, работа по часам или за рейс.</p></div><div class="row__t">По городу</div></div><div class="row"><div class="row__n">02</div><div><h3>Междугородние</h3><p>Рейсы по Беларуси и в соседние страны: от одной паллеты до полной загрузки. Считаем по километражу и типу кузова.</p></div><div class="row__t">По стране</div></div><div class="row"><div class="row__n">03</div><div><h3>Международные</h3><p>Перевозки в Россию, Польшу, Литву, Латвию: документы, таможенное оформление, сопровождение груза.</p></div><div class="row__t">СНГ и ЕС</div></div><div class="row"><div class="row__n">04</div><div><h3>Сборные грузы</h3><p>Когда нет полной загрузки: груз едет вместе с другими, вы платите за своё место. Дешевле выделенной машины.</p></div><div class="row__t">Экономия</div></div><div class="row"><div class="row__n">05</div><div><h3>Негабарит и спецтехника</h3><p>Трал и низкорамная площадка: экскаваторы, погрузчики, оборудование. Согласование маршрута и крепление.</p></div><div class="row__t">Негабарит</div></div><div class="row"><div class="row__n">06</div><div><h3>Ответственное хранение</h3><p>Промежуточный склад, перегрузка, комплектация заказов и отгрузка со склада по графику.</p></div><div class="row__t">Склад</div></div></div></div></section>
+<section class="section section--white"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Подход</p><h2>На чём держится<br>перевозка</h2></div>
+    <p class="lede">Шесть пунктов, которые отличают перевозчика от «найдём машину». Часть из них — заготовки: допишите, как это устроено у вас.</p></div>
+  <div class="grid3"><div class="card"><span class="card__tag">Прозрачность</span><h3>Расчёт до подачи</h3><p>Стоимость и срок называем до погрузки: без «доплатите на месте за ожидание».</p></div><div class="card"><span class="card__tag">Безопасность</span><h3>Крепление груза</h3><p>Ремни, упоры, ложементы. Груз не должен ехать по кузову даже при торможении.</p></div><div class="card"><span class="card__tag">Оформление</span><h3>Документы</h3><p>ТТН, доверенности, CMR для международных рейсов, сопровождение таможни.</p></div><div class="card"><span class="card__tag">Связь</span><h3>Один диспетчер</h3><p>Ведёт рейс от заявки до выгрузки и отвечает на вопросы по ходу. В шаблоне — заготовка процесса.</p></div><div class="card"><span class="card__tag">Холод</span><h3>Температура</h3><p>Для рефрижератора — режим от −18 до +4 °C и контроль по ходу рейса.</p></div><div class="card"><span class="card__tag">Спецтехника</span><h3>Негабарит</h3><p>Трал, схемы крепления, при необходимости согласование маршрута.</p></div></div>
+</div></section>
+<section class="section"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Документы</p><h2>Оформление</h2></div></div>
+  <div class="acc"><details><summary>Какие документы нужны на перевозку</summary><p>Товарно-транспортная накладная (ТТН) — основной документ: в ней груз, отправитель, получатель и водитель. Дополнительно могут понадобиться доверенность на получение груза, счёт и упаковочный лист.</p></details><details><summary>Что такое CMR</summary><p>Международная товарно-транспортная накладная для перевозок между странами. Оформляется на границе вместе с таможенными документами.</p></details><details><summary>Кто отвечает за погрузку</summary><p>Обычно это оговаривается отдельно: погрузку может делать отправитель, водитель или наёмные грузчики. В расчёте это отдельная строка, чтобы не было споров на месте.</p></details><details><summary>Нужен ли экспедитор</summary><p>Если груз требует оформления, пересчёта или контроля на складе — да. Для простых рейсов «дверь-дверь» экспедитор не нужен.</p></details></div>
+</div></section>
+<section class="section section--white"><div class="wrap split">
+  <div><img src="assets/img/cargo.jpg" alt="Крепление груза в кузове" loading="lazy"></div>
+  <div><p class="eyebrow">Подбор</p><h2>Не уверены,<br>какая машина нужна?</h2>
+    <p class="lede">Выберите тип груза — покажем кузов и лимиты. Если груз на границе лимитов, лучше уточнить у диспетчера: ошибка в классе машины — это либо переплата, либо срыв рейса.</p>
+    <a class="btn btn--ghost" href="index.html#pick" style="margin-top:8px">Подобрать в один клик</a></div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap foot__in">
+  <div><h4>ГРУЗЛИНИЯ</h4>
+    <p>Городские, междугородние и международные грузоперевозки: фургоны от 3,5 до 20 тонн, рефрижератор, борт, манипулятор, трал для негабарита. Экспедирование и документы.</p>
+    <p style="margin-top:12px"><a href="tel:+375000000000" style="font-family:var(--mono);font-size:18px;color:#fff">+375 (00) 000-00-00</a></p></div>
+  <div><h4>Разделы</h4><a href="uslugi.html">Услуги</a><a href="avtopark.html">Автопарк</a><a href="raschet.html">Расчёт</a><a href="geografiya.html">География</a><a href="raboty.html">Работы</a><a href="o-kompanii.html">О компании</a><a href="kontakty.html">Контакты</a></div>
+  <div><h4>Связь</h4><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+    <p>Ваш город, ваш адрес</p>
+    <p class="mono" style="color:#7F918B;font-size:10.5px;line-height:1.5">Это шаблон сайта: название, телефон, адрес, тарифы и фото заменяются на реальные данные компании.</p></div>
+  <div class="foot__bt"><span class="mono" style="color:#7F918B">© 2026 ГРУЗЛИНИЯ — шаблон сайта грузоперевозок</span>
+    <a href="politika.html" class="mono" style="color:#A9B9B4">Политика конфиденциальности</a></div>
+</div></footer>
+<div class="fbar">
+  <a href="tel:+375000000000">Позвонить</a>
+  <a href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="viber://chat?number=%2B375000000000">Viber</a>
+  <a href="https://t.me/">Telegram</a>
+</div>
+<script src="assets/js/main.v1.js" defer></script>
+</body></html>

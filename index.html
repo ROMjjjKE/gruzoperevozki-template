@@ -1,0 +1,209 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ГРУЗЛИНИЯ — грузоперевозки по Беларуси и за её пределы | шаблон сайта</title>
+<meta name="description" content="Шаблон корпоративного сайта транспортной компании: городские, междугородние и международные перевозки, автопарк, подбор кузова, калькулятор рейса, документы.">
+<meta property="og:title" content="ГРУЗЛИНИЯ — грузоперевозки по Беларуси и за её пределы | шаблон сайта"><meta property="og:description" content="Шаблон корпоративного сайта транспортной компании: городские, междугородние и международные перевозки, автопарк, подбор кузова, калькулятор рейса, документы.">
+<meta property="og:type" content="website"><meta property="og:locale" content="ru_BY">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#131B1E;--paper:#EDEEEA;--white:#FAFBF9;--red:#B23A2E;--red2:#8E2C22;--line:#C7CEC8;--line2:#ADB6AF;
+--disp:"IBM Plex Sans Condensed",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--body)}
+body.is-locked{overflow:hidden}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:min(1240px,100% - 44px);margin-inline:auto}
+.top{position:sticky;top:0;z-index:60;background:rgba(237,238,234,.96);border-bottom:1px solid var(--line)}
+.top__in{display:flex;align-items:center;gap:16px;height:72px}
+.nav{display:flex;gap:16px;margin-left:auto}
+.burger{display:none;margin-left:auto;width:44px;height:38px;background:none;border:1px solid var(--ink);flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0}
+.burger span{width:20px;height:2px;background:var(--ink);display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+text-transform:uppercase;padding:15px 20px;border:1px solid var(--ink);background:var(--ink);color:#fff}
+.btn--red{background:var(--red2);border-color:var(--red2);color:#fff}
+.btn--wg{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.hero{position:relative;overflow:hidden;background:#0F1719}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__in{position:relative;z-index:2;color:#fff}
+.hero h1{font-family:var(--disp);font-size:clamp(30px,5.4vw,72px);line-height:.96;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+.drawer{position:fixed;inset:0;z-index:120;background:rgba(19,27,30,.62);display:flex;justify-content:flex-end}
+.drawer__in{width:min(410px,100%);background:var(--paper);height:100%;overflow-y:auto;padding:18px 22px 30px;display:flex;flex-direction:column}
+.fbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;background:rgba(237,238,234,.98);border-top:1px solid var(--line2);padding:8px 10px;gap:6px}
+.fbar a{flex:1;text-align:center;padding:11px 4px;font-family:var(--mono);font-size:11px;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink)}
+.fbar a:first-child{background:var(--red2);border-color:var(--red2);color:#fff}
+@media (max-width:859px){.fbar{display:flex}body{padding-bottom:64px}}
+@media (max-width:1049px){.nav,.top__tel{display:none}.burger{display:flex}}
+</style>
+<link rel="stylesheet" href="assets/css/style.v1.css">
+</head><body>
+<header class="top"><div class="wrap top__in">
+  <a class="brand" href="index.html" aria-label="ГРУЗЛИНИЯ — на главную">
+    <span class="brand__mk" aria-hidden="true"></span>
+    <span class="brand__tx"><b>ГРУЗЛИНИЯ</b><span>Грузоперевозки · Ваш город</span></span>
+  </a>
+  <nav class="nav" aria-label="Основная навигация"><a href="uslugi.html"Услуги></a><a href="avtopark.html"Автопарк></a><a href="raschet.html"Расчёт></a><a href="geografiya.html"География></a><a href="raboty.html"Работы></a><a href="o-kompanii.html"О компании></a></nav>
+  <a class="top__tel" href="tel:+375000000000">+375 (00) 000-00-00</a>
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+</div></header>
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer__in" role="dialog" aria-modal="true" aria-label="Меню сайта">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <span class="mono">Меню</span>
+      <button class="drawer__x" id="drawerClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <a class="dl" href="uslugi.html">Услуги</a><a class="dl" href="avtopark.html">Автопарк</a><a class="dl" href="raschet.html">Расчёт</a><a class="dl" href="geografiya.html">География</a><a class="dl" href="raboty.html">Работы</a><a class="dl" href="o-kompanii.html">О компании</a><a class="dl" href="kontakty.html">Контакты</a>
+    <a class="btn btn--red" href="tel:+375000000000" style="margin-top:18px">+375 (00) 000-00-00</a>
+    <a class="btn btn--ghost" href="https://wa.me/375000000000" target="_blank" rel="noopener" style="margin-top:8px">WhatsApp</a>
+  </div>
+</div>
+
+<main>
+<section class="hero">
+  <img class="hero__bg" src="assets/img/hero.jpg" alt="Грузовой автомобиль с полуприцепом на трассе" fetchpriority="high">
+  <div class="hero__in">
+    <h1>Грузоперевозки<br>по Беларуси<br><em>и за её пределы</em></h1>
+    <p class="hero__lead">Фургоны от 3,5 до 20 тонн, рефрижератор, борт с краном и трал для негабарита. Расчёт до подачи машины, документы и крепление груза.</p>
+    <div class="hero__cta">
+      <a class="btn btn--red" href="tel:+375000000000">Позвонить +375 (00) 000-00-00</a>
+      <a class="btn btn--wg" href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn--wg" href="raschet.html">Рассчитать рейс</a>
+    </div>
+    <div class="route"><div>Минск — Москва<b>720 км</b></div><div>Минск — Вильнюс<b>190 км</b></div><div>Минск — Варшава<b>550 км</b></div><div>Минск — Киев<b>520 км</b></div><div>Минск — Гомель<b>300 км</b></div><div>Минск — Брест<b>350 км</b></div></div>
+  </div>
+</section>
+
+<section class="section"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Услуги</p><h2>Что перевозим</h2></div>
+    <p class="lede">От одной паллеты по городу до трала с техникой и международного рейса с таможней.</p></div>
+  <div class="rows"><div class="row"><div class="row__n">01</div><div><h3>Городские перевозки</h3><p>Доставка по городу и пригороду: паллеты, мебель, оборудование, стройматериалы. Машина от 3,5 т, работа по часам или за рейс.</p></div><div class="row__t">По городу</div></div><div class="row"><div class="row__n">02</div><div><h3>Междугородние</h3><p>Рейсы по Беларуси и в соседние страны: от одной паллеты до полной загрузки. Считаем по километражу и типу кузова.</p></div><div class="row__t">По стране</div></div><div class="row"><div class="row__n">03</div><div><h3>Международные</h3><p>Перевозки в Россию, Польшу, Литву, Латвию: документы, таможенное оформление, сопровождение груза.</p></div><div class="row__t">СНГ и ЕС</div></div><div class="row"><div class="row__n">04</div><div><h3>Сборные грузы</h3><p>Когда нет полной загрузки: груз едет вместе с другими, вы платите за своё место. Дешевле выделенной машины.</p></div><div class="row__t">Экономия</div></div><div class="row"><div class="row__n">05</div><div><h3>Негабарит и спецтехника</h3><p>Трал и низкорамная площадка: экскаваторы, погрузчики, оборудование. Согласование маршрута и крепление.</p></div><div class="row__t">Негабарит</div></div><div class="row"><div class="row__n">06</div><div><h3>Ответственное хранение</h3><p>Промежуточный склад, перегрузка, комплектация заказов и отгрузка со склада по графику.</p></div><div class="row__t">Склад</div></div></div>
+</div></section>
+
+<section class="section section--white"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Подбор · интерактив</p><h2>Машина под груз</h2></div>
+    <p class="lede">Выберите, что везёте: покажем тип кузова, лимиты по весу и объёму и почему подходит именно он.</p></div>
+  <div class="pick" id="pick">
+  <div class="pick__list" role="group" aria-label="Тип груза"><button type="button" data-c="pallet" aria-pressed="true">Паллеты и коробки<small>Фургон 5 т · 34 м³</small></button><button type="button" data-c="build" aria-pressed="false">Стройматериалы<small>Борт 10 т · 50 м³</small></button><button type="button" data-c="equip" aria-pressed="false">Оборудование<small>Фургон 10 т · 50 м³</small></button><button type="button" data-c="furniture" aria-pressed="false">Мебель<small>Фургон 5 т · 34 м³</small></button><button type="button" data-c="food" aria-pressed="false">Продукты и медикаменты<small>Рефрижератор 5 т</small></button><button type="button" data-c="oversize" aria-pressed="false">Негабарит и техника<small>Трал до 40 т</small></button><button type="button" data-c="small" aria-pressed="false">Мелкая партия, 1–2 паллеты<small>Фургон 3,5 т · 18 м³</small></button><button type="button" data-c="household" aria-pressed="false">Квартирный переезд<small>Фургон 3,5 т + грузчики</small></button></div>
+  <div class="pick__out" aria-live="polite">
+    <h4>Рекомендуем</h4>
+    <p class="big" id="pkOut">Фургон 5 т · 34 м³</p>
+    <div class="specs" id="pkSpecs"><span>до до 5 000 кг</span><span>34 м³</span><span>2,3 × 2,4 м</span></div>
+    <p id="pkWhy">Обычный сухой фургон: груз закрыт от дождя, есть крепёжные ремни. Для 1–8 паллет чаще выгоднее машина 3,5 т.</p>
+    <a class="btn btn--red" id="pkCta" href="https://wa.me/375000000000" target="_blank" rel="noopener">Уточнить по грузу</a>
+    <p class="fineprint" style="margin:12px 0 0">Проверьте вес и объём: если груз тяжелее или объёмнее — нужен другой класс машины.</p>
+  </div>
+  <script type="application/json" id="cargoData">[["pallet", "Паллеты и коробки", "Фургон 5 т · 34 м³", "до 5 000 кг", "34 м³", "2,3 × 2,4 м", "Обычный сухой фургон: груз закрыт от дождя, есть крепёжные ремни. Для 1–8 паллет чаще выгоднее машина 3,5 т."], ["build", "Стройматериалы", "Борт 10 т · 50 м³", "до 10 000 кг", "50 м³", "2,4 × 2,6 м", "Бортовая площадка с тентом: удобно грузить краном или сбоку. Кирпич, блоки, профиль, пиломатериал."], ["equip", "Оборудование", "Фургон 10 т · 50 м³", "до 10 000 кг", "50 м³", "2,4 × 2,6 м", "Закрытый кузов и крепление к полу: станки и хрупкое оборудование не мокнут и не едут по кузову."], ["furniture", "Мебель", "Фургон 5 т · 34 м³", "до 5 000 кг", "34 м³", "2,3 × 2,4 м", "Закрытый фургон с ремнями и одеялами. Для квартирного переезда — машина 3,5 т с грузчиками."], ["food", "Продукты и медикаменты", "Рефрижератор 5 т", "до 5 000 кг", "30 м³", "2,3 × 2,2 м", "Температурный режим от −18 до +4 °C. Для продуктов и лекарств важна не только машина, но и непрерывная запись температуры."], ["oversize", "Негабарит и техника", "Трал до 40 т", "до 40 000 кг", "—", "3,0 × 13,6 м", "Низкорамная площадка для экскаваторов и крупных конструкций. Нужны схемы крепления и, при необходимости, согласование маршрута."], ["small", "Мелкая партия, 1–2 паллеты", "Фургон 3,5 т · 18 м³", "до 1 500 кг", "18 м³", "2,0 × 2,2 м", "Самая манёвренная машина: проходит во дворы и на подземные паркинги по высоте."], ["household", "Квартирный переезд", "Фургон 3,5 т + грузчики", "до 1 500 кг", "18 м³", "2,0 × 2,2 м", "Машина с грузчиками и упаковкой. Считается по часам, а не по километрам: важен объём и этажность."]]</script>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Автопарк</p><h2>Габариты<br>и лимиты</h2></div>
+    <p class="lede">Клиенту нужны цифры, а не «большая машина». Здесь тоннаж, объём и размеры кузова.</p></div>
+  <div class="tblwrap"><table class="fleet"><thead><tr><th>Машина</th><th>Объём</th><th>Грузоподъёмность</th><th>Кузов, Д × Ш × В</th><th>Под что</th></tr></thead><tbody><tr><td><b>Фургон 3,5 т</b></td><td class="num">18 м³</td><td class="num">1 500 кг</td><td class="num">4,2 × 2,0 × 2,2 м</td><td>Городская доставка, мелкие партии, переезды</td></tr><tr><td><b>Фургон 5 т</b></td><td class="num">34 м³</td><td class="num">3 000 кг</td><td class="num">6,2 × 2,3 × 2,4 м</td><td>Паллеты, мебель, оборудование по стране</td></tr><tr><td><b>Фургон 10 т</b></td><td class="num">50 м³</td><td class="num">8 000 кг</td><td class="num">8,0 × 2,4 × 2,6 м</td><td>Крупные партии, стройматериалы</td></tr><tr><td><b>Тент 20 т</b></td><td class="num">90 м³</td><td class="num">20 000 кг</td><td class="num">13,6 × 2,45 × 2,7 м</td><td>Междугородние и международные рейсы</td></tr><tr><td><b>Рефрижератор 5 т</b></td><td class="num">30 м³</td><td class="num">4 000 кг</td><td class="num">6,0 × 2,3 × 2,2 м</td><td>Продукты, медикаменты, −18…+4 °C</td></tr><tr><td><b>Борт с краном</b></td><td class="num">—</td><td class="num">8 000 кг</td><td class="num">6,5 × 2,5 м</td><td>Стройматериалы, блоки, кольца, погрузка краном</td></tr><tr><td><b>Трал низкорамный</b></td><td class="num">—</td><td class="num">40 000 кг</td><td class="num">13,6 × 3,0 м</td><td>Спецтехника и негабарит</td></tr></tbody></table></div>
+  <p class="fineprint" style="margin-top:12px">В шаблоне список машин демонстрационный: замените на свой парк, уточните внутренние размеры и наличие крана.</p>
+</div></section>
+
+<section class="section section--white"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Расчёт · интерактив</p><h2>Сколько стоит рейс</h2></div>
+    <p class="lede">Калькулятор считает вилку по километражу и кузову, добавляет погрузку и предупреждает, если вес выше лимита машины.</p></div>
+  <div class="calc" id="calc">
+  <div class="calc__form">
+    <div><label for="c-dir">Направление</label><select id="c-dir"><option value="mow">Минск — Москва — 720 км</option><option value="vil">Минск — Вильнюс — 190 км</option><option value="war">Минск — Варшава — 550 км</option><option value="kiev">Минск — Киев — 520 км</option><option value="gom">Минск — Гомель — 300 км</option><option value="bre">Минск — Брест — 350 км</option><option value="vit">Минск — Витебск — 280 км</option></select></div>
+    <div><label for="c-km">Или своё расстояние, км</label><input id="c-km" type="number" min="0" max="9000" step="10" placeholder="например, 420"></div>
+    <div><label for="c-veh">Тип кузова</label><select id="c-veh"><option value="van35">Фургон 3,5 т · 18 м³</option><option value="van5">Фургон 5 т · 34 м³</option><option value="truck10">Фургон 10 т · 50 м³</option><option value="truck20">Тент 20 т · 90 м³</option><option value="reefer">Рефрижератор 5 т</option></select></div>
+    <div><label for="c-w">Вес груза, кг</label><input id="c-w" type="number" min="0" max="40000" step="50" placeholder="например, 1800"></div>
+    <div><label>Дополнительно</label><div class="checks"><label><input type="checkbox" name="ex" value="load"> Погрузка</label><label><input type="checkbox" name="ex" value="unload"> Разгрузка</label><label><input type="checkbox" name="ex" value="forwarder"> Экспедитор</label><label><input type="checkbox" name="ex" value="wait"> Ожидание, час</label><label><input type="checkbox" id="c-back"> Попутный груз (скидка)</label></div></div>
+  </div>
+  <div class="calc__out" aria-live="polite">
+    <h4>Ориентировочная стоимость</h4>
+    <p class="calc__sum" id="c-sum">—</p>
+    <p class="calc__meta" id="c-meta">—</p>
+    <div class="calc__rows" id="c-rows"></div>
+    <p class="calc__warn" id="c-warn" hidden></p>
+    <p class="calc__note">Тарифы в шаблоне демонстрационные: замените ставки в файле assets/js/main.v1.js на свои. Расчёт не учитывает простои, таможню и платные дороги.</p>
+    <a class="btn btn--red" id="c-cta" href="https://wa.me/375000000000" target="_blank" rel="noopener" style="width:100%;margin-top:6px">Уточнить рейс в WhatsApp</a>
+  </div>
+  <script type="application/json" id="calcData">{"rates": [["van35", "Фургон 3,5 т · 18 м³", 1.1, 1500], ["van5", "Фургон 5 т · 34 м³", 1.4, 3000], ["truck10", "Фургон 10 т · 50 м³", 1.75, 8000], ["truck20", "Тент 20 т · 90 м³", 2.3, 20000], ["reefer", "Рефрижератор 5 т", 1.85, 4000]], "extra": [["load", "Погрузка", 45], ["unload", "Разгрузка", 45], ["forwarder", "Экспедитор", 35], ["wait", "Ожидание, час", 25]], "dist": [["Минск — Москва", 720], ["Минск — Вильнюс", 190], ["Минск — Варшава", 550], ["Минск — Киев", 520], ["Минск — Гомель", 300], ["Минск — Брест", 350], ["Минск — Витебск", 280]]}</script>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Порядок</p><h2>От заявки<br>до выгрузки</h2></div>
+    <p class="lede">Пять шагов, которые клиент должен видеть до того, как отдаст груз.</p></div>
+  <div class="steps"><div class="step"><span class="step__n">01</span><h3>Заявка</h3><p>Маршрут, груз, вес и объём, дата. Фото груза ускоряют расчёт.</p></div><div class="step"><span class="step__n">02</span><h3>Расчёт</h3><p>Подбираем машину, считаем километраж и дополнительные работы, называем вилку и срок.</p></div><div class="step"><span class="step__n">03</span><h3>Документы</h3><p>ТТН и сопроводительные документы, при необходимости — доверенность и пропуска.</p></div><div class="step"><span class="step__n">04</span><h3>Погрузка</h3><p>Подача машины, крепление груза, фотофиксация состояния до отправки.</p></div><div class="step"><span class="step__n">05</span><h3>Рейс и выгрузка</h3><p>Связь с водителем по ходу рейса, выгрузка, подтверждающие документы.</p></div></div>
+</div></section>
+
+<section class="section section--white"><div class="wrap split">
+  <div><img src="assets/img/cargo.jpg" alt="Закреплённые паллеты в кузове грузовика" loading="lazy"></div>
+  <div><p class="eyebrow">Крепление</p><h2>Груз не должен<br>ехать по кузову</h2>
+    <p class="lede">Ремни, распорные балки, упоры и ложементы. При торможении груз весом в тонну ведёт себя как тонна, а не как коробка: крепление — это не формальность, а часть перевозки.</p>
+    <p class="lede" style="margin-top:12px">Отдельная тема — негабарит и техника: там нужны схемы крепления и расчёт нагрузок, поэтому такие рейсы считаем после уточнения габаритов и точек крепления.</p>
+    <a class="btn btn--ghost" href="avtopark.html" style="margin-top:8px">Смотреть автопарк</a></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="sec-head"><div><p class="eyebrow">Работы</p><h2>Как это выглядит</h2></div>
+    <a class="btn btn--ghost" href="raboty.html">Все фото</a></div>
+  <div class="gal">
+    <figure><img src="assets/img/loading.jpg" alt="Погрузка паллет в фургон" loading="lazy"><figcaption>Погрузка · паллеты</figcaption></figure>
+    <figure><img src="assets/img/reefer.jpg" alt="Рефрижератор с открытыми дверями" loading="lazy"><figcaption>Рефрижератор · температурный режим</figcaption></figure>
+    <figure><img src="assets/img/oversize.jpg" alt="Экскаватор на низкорамном трале" loading="lazy"><figcaption>Негабарит · трал</figcaption></figure>
+  </div>
+  <p class="fineprint" style="margin-top:14px">Фотографии в шаблоне демонстрационные. Поставьте свои снимки машин и погрузок — это самый весомый аргумент.</p>
+</div></section>
+
+<section class="section section--white"><div class="wrap split">
+  <div><p class="eyebrow">Вопросы</p><h2>Что спрашивают</h2><div class="acc"><details><summary>Как считается стоимость?</summary><p>Базовая ставка за километр зависит от типа кузова и тоннажа, плюс погрузка, разгрузка и дополнительные услуги. В шаблоне калькулятор работает на демонстрационных тарифах — их нужно заменить на свои.</p></details><details><summary>Что нужно указать для расчёта?</summary><p>Маршрут, вес и объём груза, тип груза (нужен ли сухой кузов или рефрижератор), дату и нужны ли грузчики. По этим данным уже можно назвать вилку.</p></details><details><summary>Возите ли одну паллету?</summary><p>Да, для небольших партий есть машина 3,5 т и вариант сборного груза: вы платите за место, а не за всю машину.</p></details><details><summary>Как оформляются документы?</summary><p>Товарно-транспортная накладная, при необходимости — доверенность и сопроводительные документы. Для международных рейсов — CMR и таможенное оформление.</p></details><details><summary>Есть ли страхование груза?</summary><p>В шаблоне этот пункт — заготовка: укажите, страхуете ли вы груз и на какую сумму. Это один из первых вопросов клиента при дорогом грузе.</p></details><details><summary>Что с негабаритом?</summary><p>Для техники и крупных конструкций используется трал. Нужны габариты, вес и точки крепления; маршрут иногда требует согласования.</p></details></div></div>
+  <div><img src="assets/img/loading.jpg" alt="Погрузка груза на складе" loading="lazy">
+    <p class="fineprint" style="margin-top:10px">Для расчёта достаточно маршрута, веса и объёма. Фото груза помогает точнее подобрать машину.</p></div>
+</div></section>
+
+<section class="section"><div class="wrap split">
+  <div><p class="eyebrow">Заявка</p><h2>Опишите<br>перевозку</h2>
+    <p class="lede" style="margin-bottom:16px">Маршрут, груз и дата. В шаблоне форма открывает WhatsApp — подставьте свой номер.</p>
+    <form class="form" id="leadForm" novalidate>
+  <div><label for="f-name">Имя</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться"></div>
+  <div><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+375"></div>
+  <div><label for="f-route">Маршрут</label><input id="f-route" name="route" type="text" placeholder="Откуда — куда"></div>
+  <div><label for="f-cargo">Груз</label>
+    <select id="f-cargo" name="cargo">
+      <option>Паллеты / коробки</option><option>Стройматериалы</option><option>Оборудование</option>
+      <option>Мебель</option><option>Продукты (рефрижератор)</option><option>Негабарит</option><option>Другое</option>
+    </select></div>
+  <div><label for="f-msg">Детали</label><textarea id="f-msg" name="msg" placeholder="Вес, объём, дата, нужна ли погрузка"></textarea></div>
+  <button class="btn btn--red" type="submit">Отправить в WhatsApp</button>
+  <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+  <p class="fineprint" style="margin:0">Форма не отправляет данные на сервер: она открывает WhatsApp с готовым текстом заявки. В шаблоне подставьте свой номер.</p>
+</form></div>
+  <div><p class="eyebrow">Контакты</p><h2 style="font-size:clamp(22px,3vw,32px)">ГРУЗЛИНИЯ</h2>
+    <p class="lede" style="margin-top:10px">Грузоперевозки по Беларуси, СНГ и ЕС.<br><strong>Ваш город, ваш адрес</strong></p>
+    <a href="tel:+375000000000" style="display:inline-block;font-family:var(--mono);font-size:21px;margin:14px 0 8px">+375 (00) 000-00-00</a>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+      <a class="btn btn--red" href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn--ghost" href="viber://chat?number=%2B375000000000">Viber</a>
+      <a class="btn btn--ghost" href="kontakty.html">Все контакты</a>
+    </div>
+    <p class="fineprint" style="margin-top:16px">Это шаблон: телефон, адрес, название и тарифы — заглушки. Замените их на реальные данные перед публикацией.</p></div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap foot__in">
+  <div><h4>ГРУЗЛИНИЯ</h4>
+    <p>Городские, междугородние и международные грузоперевозки: фургоны от 3,5 до 20 тонн, рефрижератор, борт, манипулятор, трал для негабарита. Экспедирование и документы.</p>
+    <p style="margin-top:12px"><a href="tel:+375000000000" style="font-family:var(--mono);font-size:18px;color:#fff">+375 (00) 000-00-00</a></p></div>
+  <div><h4>Разделы</h4><a href="uslugi.html">Услуги</a><a href="avtopark.html">Автопарк</a><a href="raschet.html">Расчёт</a><a href="geografiya.html">География</a><a href="raboty.html">Работы</a><a href="o-kompanii.html">О компании</a><a href="kontakty.html">Контакты</a></div>
+  <div><h4>Связь</h4><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+    <p>Ваш город, ваш адрес</p>
+    <p class="mono" style="color:#7F918B;font-size:10.5px;line-height:1.5">Это шаблон сайта: название, телефон, адрес, тарифы и фото заменяются на реальные данные компании.</p></div>
+  <div class="foot__bt"><span class="mono" style="color:#7F918B">© 2026 ГРУЗЛИНИЯ — шаблон сайта грузоперевозок</span>
+    <a href="politika.html" class="mono" style="color:#A9B9B4">Политика конфиденциальности</a></div>
+</div></footer>
+<div class="fbar">
+  <a href="tel:+375000000000">Позвонить</a>
+  <a href="https://wa.me/375000000000" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="viber://chat?number=%2B375000000000">Viber</a>
+  <a href="https://t.me/">Telegram</a>
+</div>
+<script src="assets/js/main.v1.js" defer></script>
+</body></html>
